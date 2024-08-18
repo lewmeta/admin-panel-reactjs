@@ -8,6 +8,7 @@ import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 
 import "./styles/global.scss"
+import Menu from "./components/menu/menu";
 
 function App() {
 
@@ -15,6 +16,14 @@ function App() {
     return (
       <div className="main">
         <Navbar />
+        <div className="container">
+          <div className="menu-container">
+            <Menu />
+          </div>
+          <div className="container-container">
+            container
+          </div>
+        </div>
         <Footer />
       </div>
     )
@@ -22,20 +31,38 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: "/",
       element: <Layout />,
       children: [
-
-      ]
+        {
+          path: "/",
+          element: <Home />,
+        },
+        // {
+        //   path: "/users",
+        //   element: <Users />,
+        // },
+        // {
+        //   path: "/products",
+        //   element: <Products />,
+        // },
+        // {
+        //   path: "/users/:id",
+        //   element: <User />,
+        // },
+        // {
+        //   path: "/products/:id",
+        //   element: <Product />,
+        // },
+      ],
     },
-    {
-      path: "/",
-      element: <Home />,
-    },
+    // {
+    //   path: "/login",
+    //   element: <Login />,
+    // },
   ]);
-  return (
-    <RouterProvider router={router} />
-  )
+
+  return <RouterProvider router={router} />;
 }
 
 export default App
